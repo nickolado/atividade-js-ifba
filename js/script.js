@@ -18,7 +18,7 @@ botao.addEventListener('click', () => {
 });
 
 
-campos.forEach((campo) => {
+camposDoFormulario.forEach((campo) => {
     campo.addEventListener('invalid', function (e) {
         e.preventDefault();
 
@@ -39,7 +39,6 @@ campos.forEach((campo) => {
 });
 
 function verificaCampo(campo) {
-    // corrigido: name correto é "nasc"
     if (campo.name === "nasc" && campo.value !== "") {
         ehMaiorDeIdade(campo);
     }
