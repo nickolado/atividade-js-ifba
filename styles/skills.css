@@ -1,0 +1,36 @@
+@import url(style.css);
+
+body {
+  background: rgb(29, 29, 29);
+  --botao-cor: #ffffff;
+  color: var(--cor-secundaria);
+  transition: 0.3s ease;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+body[data-theme="light"] {
+  background: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  transition: 0.3s ease;
+  min-height: 100vh;
+  overflow: hidden;
+  --botao-cor: black;
+}
+
+body[data-theme="dark"] {
+  background: rgb(29, 29, 29);
+  --botao-cor: #ffffff;
+  color: var(--cor-secundaria);
+  transition: 0.3s ease;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.destaque {
+    color: red; 
+}
+
+body[data-theme="dark"] .destaque {
+    color: red; 
+}
