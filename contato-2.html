@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"&gt;>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="./styles/form.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -23,94 +23,93 @@
             </nav>
         </div>
     </header>
+
     <main class="form-container">
         <form action="/cadastro" method="POST" id="formCadastro" class="form-box">
 
             <h2 class="form-title">Cadastro</h2>
 
             <div class="form-group">
-            <label for="nome" class="form-label">Nome:</label>
-            <input type="text" id="nome" name="nome" class="form-input"
-                placeholder="Nome completo" minlength="5" maxlength="40" required>
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" id="nome" name="nome" class="form-input"
+                    placeholder="Nome completo" minlength="5" maxlength="40" required>
             </div>
 
             <div class="form-group">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" id="email" name="email" class="form-input"
-                placeholder="seuemail@email.com" required>
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-input"
+                    placeholder="seuemail@email.com" required>
             </div>
 
             <div class="form-group">
-            <label for="idade" class="form-label">Idade:</label>
-            <input type="number" id="idade" name="idade" class="form-input"
-                min="0" max="100" placeholder="Idade">
+                <label for="whatsapp" class="form-label">WhatsApp:</label>
+                <input type="tel" id="whatsapp" name="whatsapp" class="form-input"
+                    placeholder="(xx) xxxxx-xxxx" required>
             </div>
 
             <div class="form-group">
-            <span class="form-label">Maior de 18?</span>
-            <div class="form-radio-group">
-                <label>
-                <input type="radio" name="maioridade" value="sim"> Sim
-                </label>
-                <label>
-                <input type="radio" name="maioridade" value="nao"> Não
-                </label>
-            </div>
+                <label for="nasc" class="form-label">Data de nascimento:</label>
+                <input type="date" name="nasc" id="aniversario" class="form-input" required>
             </div>
 
             <div class="form-group">
-            <label for="whatsapp" class="form-label">WhatsApp:</label>
-            <input type="tel" id="whatsapp" name="whatsapp" class="form-input"
-                placeholder="(xx) xxxxx-xxxx" required>
+                <label for="pais" class="form-label">País:</label>
+                <select id="pais" name="pais" class="form-select" required>
+                    <option value="">Selecione um país</option>
+                    <option value="br">Brasil</option>
+                    <option value="us">Estados Unidos</option>
+                    <option value="uk">Reino Unido</option>
+                    <option value="jp">Japão</option>
+                    <option value="cn">China</option>
+                </select>
             </div>
 
-            <div class="form-group">
-            <label for="nasc" class="form-label">Data de nascimento:</label>
-            <input type="date" name="nasc" id="nasc" class="form-input">
-            </div>
+            <!-- SEÇÃO FOTO -->
+            <div class="form-group foto-section">
+                <span class="form-label">Foto de perfil:</span>
 
-            <div class="form-group">
-            <label for="pais" class="form-label">País:</label>
-            <select id="pais" name="pais" class="form-select" required>
-                <option value="">Selecione um país</option>
-                <option value="br">Brasil</option>
-                <option value="us">Estados Unidos</option>
-                <option value="uk">Reino Unido</option>
-                <option value="jp">Japão</option>
-                <option value="cn">China</option>
-            </select>
+                <div class="foto-preview" id="fotoPreview">
+                    <div class="foto-placeholder" id="fotoPlaceholder">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Nenhuma foto</span>
+                    </div>
+                    <img id="fotoCapturada" src="" alt="Foto capturada" style="display:none;">
+                </div>
+
+                <div class="foto-acoes">
+                    <button type="button" class="btn btn-secondary" id="btnAbrirCamera">
+                        <i class="fa-solid fa-camera"></i> Tirar foto
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="btnRemoverFoto" style="display:none;">
+                        <i class="fa-solid fa-trash"></i> Remover
+                    </button>
+                </div>
+
+                <!-- Camera -->
+                <div class="camera-container" id="cameraContainer" style="display:none;">
+                    <video id="video" width="100%" autoplay playsinline></video>
+                    <div class="camera-acoes">
+                        <button type="button" class="btn btn-primary" id="btnCapturar">
+                            <i class="fa-solid fa-circle"></i> Capturar
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="btnCancelarCamera">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+
+                <canvas id="canvas" style="display:none;"></canvas>
             </div>
+            <!-- FIM SEÇÃO FOTO -->
 
             <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-            <button type="reset" class="btn btn-secondary">Limpar</button>
+                <button type="submit" class="btn btn-primary" data-botao-enviar>Cadastrar</button>
+                <button type="reset" class="btn btn-secondary">Limpar</button>
             </div>
-
-            <section class="formulario">
-            <div class="formulario__container">
-                <h2 class="formulario__titulo-texto">Reconhecimento facial</h2>
-                <p class="formulario__texto">Clique no quadro abaixo para capturarmos uma imagem sua!</p>
-
-                <img src="../img/reconhecimento.png" alt="Rosto com olhos e um sorriso dentro de um enquadramento"
-                    data-video-botao class="formulario__imagem">
-
-                <div class="formulario__camera" data-camera>
-                    <video width="320" height="240" autoplay data-video></video>
-                    <button class='camera__botao' data-tirar-foto>Tirar foto</button>
-                </div>
-
-                <div class="formulario__mensagem" data-mensagem>
-                    <canvas width="320" height="240" data-video-canvas></canvas>
-                    <img src="../img/ícone check.png" alt="Ícone de validação" class="formulario__imagem">
-                    <p>Prontinho, imagem capturada!</p>
-
-                    <a href="#" class="formulario__botao formulario__botao--ancora" data-enviar>Quero abrir minha
-                        conta!</a>
-                </div>
-            </div>
-
         </form>
     </main>
+
     <script src="./js/script.js" type="module"></script>
+    <script src="./js/camera.js"></script>
 </body>
 </html>
